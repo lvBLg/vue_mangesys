@@ -27,59 +27,59 @@
 
 <script>
 export default {
-    data() {
-        return{
-            // 登陆表单数据对象
-            loginForm: {
-                username: 'admin',
-                password: '123456'
-            },
-            // 表单验证规则
-            loginRules: {
-                // 验证用户名
-                username: [
-                    {required: true, message: '请输入登录名', trigger: 'blur'},
-                    {min: 3, max: 10, message: '长度在 3 到 10 个字符', trigger: 'blur'}
-                ],
-                // 验证密码
-                password: [
-                    {required: true, message: '请输入登录密码', trigger: 'blur'},
-                    {min: 6, max: 15, message: '长度在 6 到 15 个字符', trigger: 'blur'}
-                ]
-            }
-        }
-    },
-    methods: {
-        // 重置按钮，重置登录表单
-        resetLoginForm() {
-            this.$refs.loginFormRef.resetFields();
-        },
-        login(){
-            this.$refs.loginFormRef.validate(async valid => {
-                if (!valid) {
-                    return
-                }
-                const {data: res} = await this.$axios.post('login',this.loginForm)
-                if (res.meta.status !== 200) {
-                    return this.$message({
-                        message: '登录失败,用户名或密码错误！',
-                        type: 'warning'
-                    })
-                }
-                this.$message({
-                    message: '登录成功',
-                    type: 'success'
-                })
-                // 将登录成功之后的token，token只在当前网站打开期间生效，
-                // 所以保存到客户端的sessionStorage中
-                console.log(res)
-                window.sessionStorage.setItem('token', res.data.token);
-                // 跳转到后台主页 /home
-                this.$router.push('/home');
-            })
-        }
+  data () {
+    return {
+      // 登陆表单数据对象
+      loginForm: {
+        username: 'admin',
+        password: '123456'
+      },
+      // 表单验证规则
+      loginRules: {
+        // 验证用户名
+        username: [
+          { required: true, message: '请输入登录名', trigger: 'blur' },
+          { min: 3, max: 10, message: '长度在 3 到 10 个字符', trigger: 'blur' }
+        ],
+        // 验证密码
+        password: [
+          { required: true, message: '请输入登录密码', trigger: 'blur' },
+          { min: 6, max: 15, message: '长度在 6 到 15 个字符', trigger: 'blur' }
+        ]
+      }
     }
-};
+  },
+  methods: {
+    // 重置按钮，重置登录表单
+    resetLoginForm () {
+      this.$refs.loginFormRef.resetFields()
+    },
+    login () {
+      this.$refs.loginFormRef.validate(async valid => {
+        if (!valid) {
+          return
+        }
+        const { data: res } = await this.$axios.post('login', this.loginForm)
+        if (res.meta.status !== 200) {
+          return this.$message({
+            message: '登录失败,用户名或密码错误！',
+            type: 'warning'
+          })
+        }
+        this.$message({
+          message: '登录成功',
+          type: 'success'
+        })
+        // 将登录成功之后的token，token只在当前网站打开期间生效，
+        // 所以保存到客户端的sessionStorage中
+        // console.log(res)
+        window.sessionStorage.setItem('token', res.data.token)
+        // 跳转到后台主页 /home
+        this.$router.push('/home')
+      })
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>
