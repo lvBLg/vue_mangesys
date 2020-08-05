@@ -5,3 +5,11 @@ html, body, #app{
     padding: 0;
     box-sizing: border-box;
 }
+
+.el-breadcrumb{
+    margin-bottom: 15px;
+}
+
+.el-pagination{
+    margin-top: 15px;
+}

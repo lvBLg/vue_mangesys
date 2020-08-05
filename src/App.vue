@@ -6,7 +6,13 @@
 </template>
 
 <script>
-export default {}
+export default {
+  watch: {
+    '$route.path': function(news, old) {
+      console.log(news)
+    }
+  }
+}
 </script>
 
 <style lang="scss">
