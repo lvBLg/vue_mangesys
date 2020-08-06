@@ -1,15 +1,20 @@
 /* 全局样式 */
-html, body, #app{
+
+html, body, #app {
     height: 100%;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-.el-breadcrumb{
+.el-breadcrumb {
     margin-bottom: 15px;
 }
 
-.el-pagination{
+.el-pagination {
     margin-top: 15px;
+}
+
+#app {
+    min-width: 1366px;
 }

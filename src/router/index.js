@@ -4,6 +4,8 @@ import Login from '../views/Login.vue'
 import Home from '../views/Home.vue'
 import Welcome from '../views/home/Welcome.vue'
 import Users from '../views/home/Users.vue'
+import Rights from '../views/rights/Rights.vue'
+import Roles from '../views/rights/Roles.vue'
 
 const originalPush = VueRouter.prototype.push
 VueRouter.prototype.push = function push(location) {
@@ -21,7 +23,9 @@ const routes = [
     children: [
       { path: '/', redirect: 'welcome' },
       { path: 'welcome', component: Welcome },
-      { path: 'users', component: Users }
+      { path: 'users', component: Users },
+      { path: 'rights', component: Rights },
+      { path: 'roles', component: Roles }
     ]
   }
 ]
